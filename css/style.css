@@ -16,39 +16,61 @@
 #logo {
     /* logo goes for 5 seconds */
     animation: logo 5s;
+    width: 475px;
 }
 
-/* 2) body styling */
+/* 2) set body font to Poppins and serif as backup, background image to "concrete_seamless.png", and background color to #f1f1f1 */
 
 body {
     font-family: "Poppins", serif;
     background-image: url("../images/concrete_seamless.png");
     background-color: #f1f1f1;
-
 }
+
+/* 3) mobile header styling */
 
 header {
+    /* display: flex allows for flex properties to be used */
     display: flex;
+
+    /* align-items: center moves the links and logo to the center */
     align-items: center;
+
+    /* flex-direction: column allows the elements to stack on top of each other like in the example */
     flex-direction: column;
 }
+
+/* 4) nav_links styling */
 
 .nav_links {
     display: flex;
     flex-direction: column;
 }
 
+/* 5) set links that have and haven't been visited to be the same color */
+
 a:link, a:visited {
     color: #0000EE;
 }
 
+/* 6) styling card elements that are a child of header class using > selector */
+
 .card > header {
+    /* set background to #288088*/
     background: #288088;
+
+    /* set border to solid, 2px, with color 45ADAD*/
     border: solid 2px #45ADAD;
+
+    /* set padding on top and bottom to 20px and left and right to 0px */
     padding: 20px 0px;
+
+    /* set border radius for both top-left and top-right to 50px */
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }
+
+/* 7) set card border-radius for top-left and top-right to 50px and flex-basis to 450px */
 
 .card {
     border-top-left-radius: 50px;
@@ -56,12 +78,20 @@ a:link, a:visited {
     flex-basis: 450px;
 }
 
+/* 8) mobile pricing styling */
+
 .pricing {
     display: flex;
     align-items: center;
+
+    /* flex-wrap: wrap allows the cards to wrap if necessary */
     flex-wrap: wrap;
+
+    /* justify-content: center centers the cards inside the pricing div */
     justify-content: center;
 }
+
+/* 9) styling images in gallery class according to specifications */
 
 .gallery > img {
     border: solid 10px #50C7C7;
@@ -69,23 +99,39 @@ a:link, a:visited {
     width: 300px;
 }
 
+/* 10) style gallery class for all views using flex */
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+/* styling for screen-size larger than 900px */
+
 @media screen and (min-width: 900px) {
+    
+    /* 11) header and nav_link styling to match 1200px example */
+
     header {
         align-items: center;
+
+        /* change flex-direction to row to allow the elements to go next to each other instead of on top */
         flex-direction: row;
+
+        /* space-between allows the logo to stay to the left and the links to the right */
         justify-content: space-between;
     }
 
     .nav_links {
+        /* row allows the links to be next to each other instead of stacked */
         flex-direction: row;
+
+        /* flex-end allows the links to be as far right as possible */
         justify-content: flex-end;
     }
+
+    /* 12) pricing and card styling to match 1200px example */
 
     .pricing {
         flex-direction: row;
@@ -93,15 +139,23 @@ a:link, a:visited {
     }
 
     .card {
+        /* specify a "size" of 275px */
         flex-basis: 275px;
     }
 
+    /* 13) modify first header styling */
+
     header:not(main header) {
+        /* sticky allows the first header to always be visible while scrolling */
         position: sticky;
+
+        /* need this for the above property to work */
         top: 0
     }
 
 }
+
+/* 14) logo appears but is not animated if prefers reduced motion is true */
 
 @media (prefers-reduced-motion: reduce) {
     #logo {
@@ -109,34 +163,56 @@ a:link, a:visited {
     }
 }
 
+/* styling for printing in portrait mode */
+
 @media print {
     body {
+        /* 15) change font to Arial with backup of Helvetica */
         font-family: Arial, Helvetica;
+
+        /* 16) remove background image */
         background-image: none;
     }
+
+    /* 17) style nav_links to match print screen example */
 
     .nav_links {
         flex-direction: row;
         justify-content: space-between;
+
+        /* set gap to achieve space between links similar to in the example */
         gap: 150px;
     }
 
+    /* 18) print screen pricing class styling */
+
     .pricing {
         flex-direction: row;
+
+        /* flex-end allows cards to align at the bottom */
         align-items: flex-end;
         flex-wrap: nowrap;
     }
+
+    /* 19) print screen card class styling */
 
     .card {
         border: solid 2px #45ADDD;
         flex-basis: 325px;
     }
 
+    /* 20) print screen gallery class + id styling */
+
     #gallery, .gallery {
+        /* none makes it so both gallery id and gallery class elements aren't visible */
         display: none;
     }
 
+    /* 21) add thumbs up emoji like in example */
+
+    /* ".card ul li:nth-child(2)::after" means to apply the following rules after the 2nd li element in ul in the .card class */
     .card ul li:nth-child(2)::after {
+        /* insert the thumbs emoji as content */
         content: "👍";
     }
 }
